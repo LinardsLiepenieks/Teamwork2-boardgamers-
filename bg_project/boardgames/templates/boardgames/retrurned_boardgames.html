@@ -1,0 +1,12 @@
+{% extends "boardgames/base.html" %}
+
+{% block content %}
+  <h2>Return Boardgame: {{ borrowing.boardgame.name }}</h2>
+  <p>Borrowed by: {{ borrowing.borrower.username }}</p>
+  <p>Date Borrowed: {{ borrowing.date_borrowed }}</p>
+
+  <form method="post" action="{% url 'bg_project:return_boardgame' borrowing.id %}">
+    {% csrf_token %}
+    <button type="submit">Return Boardgame</button>
+  </form>
+{% endblock content %}

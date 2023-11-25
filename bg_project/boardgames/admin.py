@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Boardgames, Borrowing
 
-# Register your models here.
+admin.site.register(Boardgames)
+admin.site.register(Borrowing)

@@ -1,0 +1,16 @@
+{% extends "boardgames/base.html" %}
+
+{% block content %}
+  <h2>{{ boardgame.name }}</h2>
+  <p>Creator: {{ boardgame.creator }}</p>
+  <p>Year Published: {{ boardgame.year_published }}</p>
+
+  {% if user.is_authenticated %}
+    <form method="post" action="{% url 'bg_project:new_borrowing' boardgame.id %}">
+      {% csrf_token %}
+      <button type="submit">Borrow this Boardgame</button>
+    </form>
+  {% else %}
+    <p>Login to borrow this Boardgame</p>
+  {% endif %}
+{% endblock content %}
