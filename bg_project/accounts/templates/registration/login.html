@@ -1,0 +1,16 @@
+{% extends "boardgames/base.html" %}
+<section>
+	{% block content %}
+	<div>
+		{% if form.errors %}
+		<p>Wrong password or username</p>
+		{% endif %}
+	</div>
+
+	<form action="{% url 'accounts:login' %}" method="post">
+		<fieldset>{% csrf_token %} {{form.as_div}}</fieldset>
+		<button name="submit">Log in</button>
+	</form>
+
+	{% endblock content %}
+</section>
