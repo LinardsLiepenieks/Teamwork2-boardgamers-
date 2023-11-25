@@ -9,19 +9,23 @@
 	</head>
 	<body>
 		<nav class="d-flex justify-content-between">
-			<div>
+			<div class="d-flex align-items-center">
 				<a href="{% url 'boardgames:index' %}">Home</a>
 				<a>Boardgames</a>
 			</div>
-			<div>
+			<div class="d-flex align-items-center">
 				{% if user.is_authenticated%}
-				<p>Hello, {{user.username}}</p>
+				<span class="user-welcome"> Hello, {{user.username}}! </span>
+				<form action="{% url 'accounts:logout' %}" method="post">
+					{% csrf_token %}
+					<button class="log-out" name="submit">Log out</button>
+				</form>
 				{%else%}
 				<a href="{% url 'accounts:login' %}">Log in</a>
-				<a>Register</a>
+				<a href="{% url 'accounts:register' %}">Register</a>
 				{%endif%}
 			</div>
 		</nav>
-		base {%block content%} {% endblock content%}
+		{%block content%} {% endblock content%}
 	</body>
 </html>

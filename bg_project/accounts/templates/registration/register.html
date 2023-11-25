@@ -1,0 +1,10 @@
+{% extends "boardgames/base.html" %}
+
+<section>
+	{% block content %}
+	<form action="{% url 'accounts:register' %}" method="post">
+		<fieldset>{% csrf_token %} {{form.as_div}}</fieldset>
+		<button name="submit">Register</button>
+	</form>
+	{% endblock content %}
+</section>

@@ -27,7 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+LOGIN_REDIRECT_URL = 'boardgames:index'
+LOGOUT_REDIRECT_URL = 'accounts:login'
 # Application definition
 
 INSTALLED_APPS = [
