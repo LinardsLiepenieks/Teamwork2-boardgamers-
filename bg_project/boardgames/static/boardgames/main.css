@@ -1,0 +1,26 @@
+:root {
+	--main-color: #000004;
+	--alt-color: #ffffff;
+	--main-alt: #e08e45;
+}
+
+html,
+body {
+	margin: 0, auto;
+}
+nav {
+	background-color: var(--main-color);
+	padding: 24px;
+}
+nav a {
+	font-size: 1.2rem;
+	border-radius: 8px;
+	padding: 8px;
+	text-decoration: none;
+	color: var(--alt-color);
+	transition: all 0.4s ease;
+}
+nav a:hover {
+	background-color: var(--alt-color);
+	color: var(--main-color);
+}

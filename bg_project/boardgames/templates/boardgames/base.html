@@ -1,3 +1,27 @@
-<p>base</p>
-
-{%block content%} {% endblock content%}
+<!DOCTYPE html>
+<html>
+	<head>
+		<!---bootstrap-->
+		{% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
+		<!---custom-->
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'boardgames/main.css' %}" />
+	</head>
+	<body>
+		<nav class="d-flex justify-content-between">
+			<div>
+				<a href="{% url 'boardgames:index' %}">Home</a>
+				<a>Boardgames</a>
+			</div>
+			<div>
+				{% if user.is_authenticated%}
+				<p>Hello, {{user.username}}</p>
+				{%else%}
+				<a href="{% url 'accounts:login' %}">Log in</a>
+				<a>Register</a>
+				{%endif%}
+			</div>
+		</nav>
+		base {%block content%} {% endblock content%}
+	</body>
+</html>
