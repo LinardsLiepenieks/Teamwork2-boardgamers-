@@ -1,0 +1,33 @@
+{% extends "boardgames/base.html" %} {% block page_styles %}
+<!--load static duplicate needed to not cause errors-->
+{%load static%}
+<link rel="stylesheet" href="{% static 'accounts/profile.css' %}" />
+{% endblock %}
+<section>
+	{%block content%}
+	<content>
+		<div class="games-container">
+			<h2>My games</h2>
+			<div class="game-box">
+				<ul>
+					{% for boardgame in boardgames %}
+					<li class="boardgame">
+						<a>
+							<strong>{{ boardgame.name }}</strong>
+							<span>({{boardgame.year_published}})</span>
+							<!-- Add other fields as needed -->
+						</a>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</content>
+	<content>
+		<div class="games-container">
+			<h2>Borrowed games</h2>
+			<div class="game-box"></div>
+		</div>
+	</content>
+	{%endblock content%}
+</section>

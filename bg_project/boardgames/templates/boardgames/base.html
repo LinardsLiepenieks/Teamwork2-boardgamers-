@@ -6,6 +6,8 @@
 		<!---custom-->
 		{% load static %}
 		<link rel="stylesheet" href="{% static 'boardgames/main.css' %}" />
+		<!--Block for other styles-->
+		{% block page_styles %}{% endblock page_styles %}
 	</head>
 	<body>
 		<nav class="d-flex justify-content-between">
@@ -15,7 +17,9 @@
 			</div>
 			<div class="d-flex align-items-center">
 				{% if user.is_authenticated%}
-				<span class="user-welcome"> Hello, {{user.username}}! </span>
+				<a class="user-welcome" href="{% url 'accounts:profile' %}"
+					>Hello, {{user.username}}!</a
+				>
 				<form action="{% url 'accounts:logout' %}" method="post">
 					{% csrf_token %}
 					<button class="log-out" name="submit">Log out</button>
@@ -26,6 +30,6 @@
 				{%endif%}
 			</div>
 		</nav>
-		{%block content%} {% endblock content%}
+		<main>{%block content%} {% endblock content%}</main>
 	</body>
 </html>

@@ -1,4 +1,10 @@
 {% extends "boardgames/base.html" %}
+<!--other styles-->
+{% block page_styles %}
+<!--load static duplicate needed to not cause errors-->
+{%load static%}
+<link rel="stylesheet" href="{% static 'accounts/auth.css' %}" />
+{% endblock %}
 <section>
 	{% block content %}
 	<div>

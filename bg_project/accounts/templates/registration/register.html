@@ -1,5 +1,10 @@
 {% extends "boardgames/base.html" %}
-
+<!--other styles-->
+{% block page_styles %}
+<!--load static duplicate needed to not cause errors-->
+{%load static%}
+<link rel="stylesheet" href="{% static 'accounts/register.css' %}" />
+{% endblock %}
 <section>
 	{% block content %}
 	<form action="{% url 'accounts:register' %}" method="post">
