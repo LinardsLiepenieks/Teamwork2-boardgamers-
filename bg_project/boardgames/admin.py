@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Boardgames, Borrowing
+from .models import Boardgame, Borrowing
 
-admin.site.register(Boardgames)
+admin.site.register(Boardgame)
 admin.site.register(Borrowing)

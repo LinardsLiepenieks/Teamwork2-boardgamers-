@@ -1,16 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Boardgame(models.Model):
     name = models.CharField(max_length=255)
     creator = models.JSONField()
     year_published = models.IntegerField()
     date_added = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
+
 
 class Borrowing(models.Model):
     boardgame = models.ForeignKey(Boardgame, on_delete=models.CASCADE)

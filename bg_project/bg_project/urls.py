@@ -16,17 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from boardgames import views
-from django.contrib.auth import views as auth_views
 
-app_name = boardgames
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
-    path('login/', auth_views.LoginView.as_view(), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('register/', views.register, name='register'),
     path('', include('boardgames.urls')),
-    path('boardgames2/', views.new_topic, name='boardgames2'),
 ]
