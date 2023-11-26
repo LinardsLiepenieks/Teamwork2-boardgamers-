@@ -7,17 +7,22 @@
 	{%block content%}
 	<content>
 		<div class="games-container">
-			<h2>My games</h2>
+			<div class="d-flex align-items-center mb-2">
+				<h2 class="m-0">My games</h2>
+				<a id="new-button" href="{% url 'boardgames:new_boardgame'%}">New +</a>
+			</div>
 			<div class="game-box">
 				<ul>
 					{% for boardgame in boardgames %}
-					<li class="boardgame">
-						<a>
+					<a
+						class="boardgame"
+						href="{% url 'boardgames:boardgame_detail' boardgame.id %}">
+						<li>
 							<strong>{{ boardgame.name }}</strong>
 							<span>({{boardgame.year_published}})</span>
 							<!-- Add other fields as needed -->
-						</a>
-					</li>
+						</li>
+					</a>
 					{% endfor %}
 				</ul>
 			</div>
@@ -25,7 +30,9 @@
 	</content>
 	<content>
 		<div class="games-container">
-			<h2>Borrowed games</h2>
+			<div class="mb-2">
+				<h2 class="m-0">Borrowed games</h2>
+			</div>
 			<div class="game-box"></div>
 		</div>
 	</content>

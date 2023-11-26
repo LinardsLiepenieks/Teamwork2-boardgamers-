@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class Boardgame(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
+    developer = models.CharField(max_length=255)
     year_published = models.IntegerField()
     date_added = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)

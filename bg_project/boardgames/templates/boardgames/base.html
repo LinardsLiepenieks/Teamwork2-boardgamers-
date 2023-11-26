@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<!--Block for other styles-->
+		{% block page_styles %}{% endblock page_styles %}
+
 		<!---bootstrap-->
+
 		{% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
 		<!---custom-->
 		{% load static %}
 		<link rel="stylesheet" href="{% static 'boardgames/main.css' %}" />
-		<!--Block for other styles-->
-		{% block page_styles %}{% endblock page_styles %}
 	</head>
 	<body>
 		<nav class="d-flex justify-content-between">

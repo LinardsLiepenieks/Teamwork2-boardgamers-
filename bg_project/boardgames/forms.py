@@ -7,19 +7,11 @@ from django.contrib.auth.models import User
 class BoardgameForm(forms.ModelForm):
     class Meta:
         model = Boardgame
-        fields = ['name', 'creator', 'year_published']
+        fields = ['name', 'description', 'year_published']
 
     name = forms.CharField(label='Boardgame Name', max_length=255)
-    creator = forms.JSONField(label='Creator')
+    description = forms.CharField(label='Description')
     year_published = forms.IntegerField(label='Year Published')
-
-
-class RegistrationForm(UserCreationForm):
-    email = forms.EmailField()
-
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'password1', 'password2']
 
 
 class BorrowingForm(UserCreationForm):

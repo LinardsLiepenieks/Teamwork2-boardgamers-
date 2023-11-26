@@ -1,10 +1,15 @@
 {% extends "boardgames/base.html" %}
+<!--other styles-->
+{% block page_styles %}
+<!--load static duplicate needed to not cause errors-->
+{%load static%}
+<link rel="stylesheet" href="{% static 'accounts/auth.css' %}" />
+{% endblock %} {% block content %}
+<h2>Add a New Boardgame</h2>
+<form method="post" action="{% url 'boardgames:new_boardgame' %}">
+	{% csrf_token %}
+	<fieldset>{{ form.as_div }}</fieldset>
 
-{% block content %}
-  <h2>Add a New Boardgame</h2>
-  <form method="post" action="{% url 'bg_project:new_boardgame' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Add Boardgame</button>
-  </form>
+	<button type="submit">Add Boardgame</button>
+</form>
 {% endblock content %}
