@@ -91,9 +91,14 @@ def borrow(request, boardgame_id):
 
     existing_borrowing = Borrowing.objects.filter(
         boardgame=boardgame, borrower=user, date_returned__isnull=True).first()
-
-    if existing_borrowing:
+    if Borrowing.objects.filter(borrower=user, date_returned__isnull=True).count() >= 3:
+        message = "You can't borrow more than 3 games at a time!"
+        messages.error(request, message)
+    elif existing_borrowing:
         message = "You have already borrowed this game!"
+        messages.error(request, message)
+    elif user == boardgame.user:
+        message = "You can't borrow your own game!"
         messages.error(request, message)
 
     else:
