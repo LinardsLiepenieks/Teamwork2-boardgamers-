@@ -5,15 +5,15 @@
 	<p>Developer: {{ boardgame.developer }}</p>
 	<p>Description: {{ boardgame.description }}</p>
 	<p>Year Published: {{ boardgame.year_published }}</p>
+	<div>
+		{% if user.is_authenticated %}
+		<form method="{{method}}" action="{% url action boardgame.id %}">
+			{% csrf_token %}
+			<button type="submit">{{button}}</button>
+		</form>
 
-	{% if user.is_authenticated %}
-	<form
-		method="post"
-		action="{% url 'boardgames:new_borrowing' boardgame.id %}">
-		{% csrf_token %}
-		<button type="submit">Borrow this Boardgame</button>
-	</form>
-	{% else %}
-	<p>Login to borrow this Boardgame</p>
+		{% else %}
+		<p>Login to borrow this Boardgame</p>
+	</div>
 	{% endif %} {% endblock content %}
 </section>

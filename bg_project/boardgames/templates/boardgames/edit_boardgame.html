@@ -7,12 +7,14 @@
 {% endblock %}
 <section>
 	{% block content %}
-	<h2>Add a New Boardgame</h2>
-	<form method="post" action="{% url 'boardgames:new_boardgame' %}">
+	<h2>Edit {{boardgame.name}}</h2>
+	<form
+		method="post"
+		action="{% url 'boardgames:edit_boardgame' boardgame.id %}">
 		{% csrf_token %}
 		<fieldset>{{ form.as_div }}</fieldset>
 
-		<button type="submit">Add Boardgame</button>
+		<button type="submit">Edit Boardgame</button>
 	</form>
 	{% endblock content %}
 </section>

@@ -20,6 +20,7 @@
 						<li>
 							<strong>{{ boardgame.name }}</strong>
 							<span>({{boardgame.year_published}})</span>
+							<i> - {{boardgame.developer}}</i>
 							<!-- Add other fields as needed -->
 						</li>
 					</a>
@@ -33,7 +34,31 @@
 			<div class="mb-2">
 				<h2 class="m-0">Borrowed games</h2>
 			</div>
-			<div class="game-box"></div>
+			<div class="game-box">
+				<ul>
+					<li>
+						{% if message %}
+						<div class="justify-content-center align-items-end p-3 d-flex">
+							{% for msg in message %}
+							<p class="m-0">{{ msg }}</p>
+							{% endfor %}
+						</div>
+						{% endif %}
+					</li>
+					{% for boardgame in borrowed_boardgames %}
+					<a
+						class="boardgame"
+						href="{% url 'boardgames:boardgame_detail' boardgame.id %}">
+						<li>
+							<strong>{{ boardgame.name }}</strong>
+							<span>({{boardgame.year_published}})</span>
+							<i> - {{boardgame.developer}}</i>
+							<!-- Add other fields as needed -->
+						</li>
+					</a>
+					{% endfor %}
+				</ul>
+			</div>
 		</div>
 	</content>
 	{%endblock content%}

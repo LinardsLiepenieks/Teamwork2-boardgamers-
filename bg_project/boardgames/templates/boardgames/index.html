@@ -1,7 +1,26 @@
-{% extends "boardgames/base.html" %}
+{% extends "boardgames/base.html" %}{% block page_styles %}
+<!--load static duplicate needed to not cause errors-->
+{%load static%}
+<link rel="stylesheet" href="{% static 'accounts/profile.css' %}" />
+{% endblock %}
 
 <section>
 	{% block content %}
-	<p>INDEX</p>
+	<div class="d-flex col">
+		<ul class="col">
+			{% for boardgame in boardgames %}
+			<a
+				class="boardgame"
+				href="{% url 'boardgames:boardgame_detail' boardgame.id %}">
+				<li>
+					<strong>{{ boardgame.name }}</strong>
+					<span>({{boardgame.year_published}})</span>
+					<i> - {{boardgame.developer}}</i>
+					<!-- Add other fields as needed -->
+				</li>
+			</a>
+			{% endfor %}
+		</ul>
+	</div>
 	{% endblock content %}
 </section>
