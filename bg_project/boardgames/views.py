@@ -12,7 +12,7 @@ def index(request):
     else:
         # If no user is logged in, you might handle it differently (e.g., show all board games)
         boardgames_not_owned = Boardgame.objects.exclude(
-            borrowing__date_returned__isnull=True)
+            borrowing__date_returned__isnull=False)
 
     return render(request, 'boardgames/index.html', {'boardgames': boardgames_not_owned})
 

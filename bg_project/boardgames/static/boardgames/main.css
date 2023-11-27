@@ -101,3 +101,14 @@ form button:focus {
 	color: var(--main-color);
 	border: 2px solid var(--main-color);
 }
+
+form fieldset div textarea {
+	background-color: var(--main-alt);
+	color: var(--main-color);
+	border: 2px solid var(--main-color);
+	border-radius: 8px;
+	padding: 8px 16px;
+	transition: all 0.6s ease;
+	width: 50%;
+	height: 200px;
+}
